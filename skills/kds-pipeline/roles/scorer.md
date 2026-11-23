@@ -11,7 +11,7 @@ must not read other steps' reports: your value is that you are independent.
 ## Steps
 
 1. Read the whole rubric and `.kds/project.md`.
-2. Read the brief. List every promise it makes.
+2. Read the brief. List every promise it makes. When the brief says the range delivers only part of a spec (some of its tasks), score that part only: list the rest under "not in this range" and take no points for it.
 3. Read the full diff, then the code around what matters.
 4. Run the profile's check commands. Note each command and its result.
 5. Score each dimension with evidence (`file:line`, or command and output).

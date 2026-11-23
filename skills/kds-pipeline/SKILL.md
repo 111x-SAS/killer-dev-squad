@@ -36,7 +36,7 @@ A worker must not read or write outside its workspace. Nothing enforces this: it
 ## Inputs you need
 
 - The pipeline to run and the project (its id comes from `orca repo list`).
-- The brief. For `review` and `measure`, also the commit range or branch to look at. For `security-audit`, `release` and `docs`, the range is the whole repository unless your owner names one.
+- The brief. For `review` and `measure`, also the commit range or branch to look at. When the range delivers only part of a spec, the brief says which tasks it covers. For `security-audit`, `release` and `docs`, the range is the whole repository unless your owner names one.
 
 If one is missing, ask before creating anything. A step that finds no `.kds/project.md` fails and says so: run `onboard` first.
 After `onboard`, the profile lives on that run's branch until your owner merges it. Say so in your answer; until it is merged, start other runs on this project with `--base-branch <that branch>`.

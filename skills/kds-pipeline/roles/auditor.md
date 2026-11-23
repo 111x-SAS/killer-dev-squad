@@ -20,7 +20,7 @@ Your task names one:
 
 ## Steps
 
-1. Read `.kds/project.md`, the brief and the whole diff. When the range is the whole repository, read the code your focus covers instead, and judge severity against what the project is for, not against a change.
+1. Read `.kds/project.md`, the brief and the whole diff. When the brief says the range delivers only part of a spec, work missing from the other parts is not a finding: name it once under "not in this range". When the range is the whole repository, read the code your focus covers instead, and judge severity against what the project is for, not against a change.
 2. Read the code around each change that matters: callers, tests, files it touches indirectly.
 3. For each finding give: `file:line`, what goes wrong, for whom, when, and the absolute severity (critical, major, minor) as the rubric defines it.
 4. Write the report: findings, most serious first. Say how sure you are when you are not sure.
