@@ -1,0 +1,19 @@
+name: Check pipelines
+
+on:
+  push:
+    branches: [main]
+    paths: [skills/**, scripts/check.sh, .github/workflows/check.yml]
+  pull_request:
+    paths: [skills/**, scripts/check.sh, .github/workflows/check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: scripts/check.sh

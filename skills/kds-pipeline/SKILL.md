@@ -70,6 +70,7 @@ Pass `--environment local --run <run_id>` to every `task-create`, `task-list` an
 5. If the pipeline has a `goal`, run the goal loop below once its steps are done.
 6. At the end, answer with:
    - what the last step's `worker_done` brought (for a scored pipeline: score, verdict, `mustFix`);
+   - for a pipeline with a `goal`: the score of every round in order (`78 → 86 → 92`) and the stop rule that ended the loop;
    - the branch that holds the work: the run's own branch for a pipeline that writes, the branch you were asked to look at for one that only reads;
    - the run's workspace and the reports' path inside it. The reports exist only there, so leave the workspace in place: removing it is your owner's call.
    A pipeline with no `goal` ends with its last step. If that step leaves findings open, report them and stop: another run is your owner's call.

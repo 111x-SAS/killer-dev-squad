@@ -41,6 +41,7 @@ the language you write to it in.
 bots/<bot>/SOUL.md       each bot's identity and rules
 skills/kds-pipeline/     the engine: how to run a pipeline, rubric, roles, pipelines, agent and models, crew list, spec composer, project profile template
 scripts/install.sh       copies a bot's SOUL.md and the skill into its Orca home
+scripts/check.sh         checks the pipelines for broken references; runs in CI on every change to skills/
 site/index.html          the landing page, one static file
 ```
 
