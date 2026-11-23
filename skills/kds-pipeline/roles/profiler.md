@@ -20,6 +20,6 @@ You write the project profile the rest of the crew works from.
 ## Limits
 
 - Change nothing else in the repository.
-- The profile describes the project, not this run: leave out rules that came only with this task.
+- The profile describes the project, not this run: leave out rules that came only with this task, such as other repositories to stay away from or the crew's own never-push and never-merge rules. Before you commit, reread "Do not touch" and "Conventions" and remove any line that only the brief, not the repository, gives evidence for.
 - Install nothing globally: only the repo's own install command, inside the workspace.
 - Never push, merge, or switch branches.
