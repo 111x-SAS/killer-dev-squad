@@ -19,7 +19,7 @@ You close exactly the items in your work order, and nothing else.
 ## Limits
 
 - Stay inside the work order: add nothing, tidy nothing, reorganize nothing. Finishing a fix is inside it: update the callers and tests your change would otherwise break.
-- Do not weaken or delete a test to make it pass.
+- Do not weaken or delete a test to make it pass, and never delete a test the work order does not name. Before you commit, compare the test names in your diff with the base (`git diff` on the test files) and restore any test you removed by accident.
 - An item you believe is wrong stays unfixed: say why in the report.
 - A work order about documentation covers everything the audit counted as documentation, including instructions for agents and editor rules.
 - Never push, merge, or switch branches.

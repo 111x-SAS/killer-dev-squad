@@ -39,6 +39,8 @@ but do not turn it into points.
 
 `ready` (≥90) · `ready-with-caveats` (75–89) · `not-ready` (60–74) · `failing` (<60)
 
+`ready` also needs an empty `mustFix`: a change of 90 or more with an open `mustFix` is `ready-with-caveats`.
+
 ## Output block
 
 Every score report ends with this block, and only one. `mustFix` lists every
