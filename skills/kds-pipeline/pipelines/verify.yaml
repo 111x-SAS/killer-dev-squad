@@ -1,0 +1,30 @@
+# Checks a change the way a reviewer would: three focused audits and two independent
+# scorers, settled by one consensus that confirms the audits' findings. Read-only.
+# The fragment that closes feature and bugfix.
+name: verify
+description: Three audits and two scorers, settled by a consensus that confirms the audits
+writes: false
+steps:
+  - name: audit-bugs
+    role: auditor
+    focus: bugs
+    tier: strong
+  - name: audit-security
+    role: auditor
+    focus: security
+    tier: fast
+  - name: audit-patterns
+    role: auditor
+    focus: patterns
+    tier: fast
+  - name: score-a
+    role: scorer
+    tier: strong
+  - name: score-b
+    role: scorer
+    tier: second
+  - name: score-report
+    role: consensus
+    tier: strong
+    deps: [audit-bugs, audit-security, audit-patterns, score-a, score-b]
+    reports: [audit-bugs, audit-security, audit-patterns, score-a, score-b]

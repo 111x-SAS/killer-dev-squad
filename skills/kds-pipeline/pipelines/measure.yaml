@@ -1,0 +1,17 @@
+# Scores a change against the rubric. Read-only.
+# Also the "measure" fragment that closes the other pipelines.
+name: measure
+description: Two independent scorers and a verified consensus
+writes: false
+steps:
+  - name: score-a
+    role: scorer
+    tier: strong
+  - name: score-b
+    role: scorer
+    tier: second   # may run on another agent: see agent.yaml
+  - name: score-report
+    role: consensus
+    tier: strong
+    deps: [score-a, score-b]
+    reports: [score-a, score-b]   # the only reports it may read

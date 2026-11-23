@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Killer Dev Squad</title>
+<meta name="description" content="A crew of Orca bots that plans, builds, reviews and ships software on its own. The experimental dev team of 111x.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Raw palette: an orca's black and white, the sea it hunts in, and pirate brass. */
+  --abyss: #0c2733;
+  --trench: #071a23;
+  --blubber: #f2f5f3;
+  --foam: #dfe8e6;
+  --saddle: #8fa3a8;
+  --brass-on-light: #7a5a0e;
+  --brass-on-dark: #d9a93a;
+
+  --bg: var(--blubber);
+  --bg-raised: var(--foam);
+  --ink: var(--abyss);
+  --ink-soft: #3d5863;
+  --accent: var(--brass-on-light);
+  --line: #c3d0cf;
+  --fin: var(--trench);
+  --fin-patch: var(--saddle);
+
+  @media (prefers-color-scheme: dark) {
+    --bg: var(--abyss);
+    --bg-raised: #12323f;
+    --ink: var(--blubber);
+    --ink-soft: #a9bcc0;
+    --accent: var(--brass-on-dark);
+    --line: #27495a;
+    --fin: var(--saddle);
+    --fin-patch: var(--blubber);
+  }
+
+  @supports (color: light-dark(white, black)) {
+    --bg: light-dark(var(--blubber), var(--abyss));
+    --bg-raised: light-dark(var(--foam), #12323f);
+    --ink: light-dark(var(--abyss), var(--blubber));
+    --ink-soft: light-dark(#3d5863, #a9bcc0);
+    --accent: light-dark(var(--brass-on-light), var(--brass-on-dark));
+    --line: light-dark(#c3d0cf, #27495a);
+    --fin: light-dark(var(--trench), var(--saddle));
+    --fin-patch: light-dark(var(--saddle), var(--blubber));
+  }
+
+  color-scheme: light dark;
+
+  --display: "Bowlby One", "Arial Black", Impact, sans-serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 62ch;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--body);
+}
+
+a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.skip { position: absolute; inset-inline-start: var(--gutter); inset-block-start: -4rem; background: var(--ink); color: var(--bg); padding: 0.5rem 0.75rem; }
+.skip:focus { inset-block-start: 0.5rem; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(1.9rem, 5vw, 3.2rem); max-inline-size: 18ch; }
+p { margin: 0; max-inline-size: var(--measure); text-wrap: pretty; }
+code, pre { font-family: var(--mono); font-size: 0.9em; }
+
+.wrap { padding-inline: var(--gutter); max-inline-size: 78rem; margin-inline: auto; }
+main > section { padding-block: clamp(3rem, 9vw, 6.5rem); }
+.lede { margin-block-start: 1.25rem; color: var(--ink-soft); font-size: 1.15rem; }
+
+/* ---------- Hero: above the waterline ---------- */
+.hero { padding-block: clamp(2.5rem, 8vw, 5rem) 0; }
+.hero h1 {
+  font-size: clamp(2.9rem, 11.5vw, 9.5rem);
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+}
+.hero h1 span { display: block; }
+.hero .pitch { margin-block-start: clamp(1.25rem, 3vw, 2rem); font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.4; max-inline-size: 34ch; }
+.hero .origin { margin-block-start: 1rem; color: var(--ink-soft); max-inline-size: 52ch; }
+
+.waterline { position: relative; block-size: clamp(5rem, 14vw, 9rem); margin-block-start: clamp(1.5rem, 4vw, 3rem); overflow: hidden; }
+.waterline::after { content: ""; position: absolute; inset-inline: 0; inset-block-end: 0; block-size: 3px; background: var(--trench); }
+.fin { position: absolute; inset-block-end: 0; inset-inline-end: 9%; block-size: 100%; aspect-ratio: 2 / 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .fin { animation: glide 2.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes glide { from { translate: -70vw 30%; } to { translate: 0 0; } }
+}
+
+/* ---------- Deep water: one real run ---------- */
+.deep {
+  color-scheme: dark;
+  background: var(--trench);
+  color: var(--blubber);
+  --accent: var(--brass-on-dark);
+  --ink-soft: #a9bcc0;
+  --line: #1f4253;
+}
+.deep h2 { max-inline-size: 16ch; }
+.log { margin-block-start: clamp(2rem, 5vw, 3.5rem); list-style: none; padding: 0; display: grid; gap: 0; counter-reset: step; }
+.log li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  column-gap: 1rem;
+  padding-block: 1.1rem;
+  border-block-start: 1px solid var(--line);
+}
+.log li::before { content: counter(step); font-family: var(--display); font-size: 1.9rem; line-height: 1; color: var(--saddle); }
+.log h3 { font-family: var(--body); font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+.log .who { color: var(--ink-soft); font-size: 0.95rem; }
+.log p { margin-block-start: 0.35rem; }
+.log .verdict { font-family: var(--display); font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.1; margin-block-start: 0.5rem; }
+.log .held { color: var(--saddle); }
+.log .passed { color: var(--accent); }
+.deep .note { margin-block-start: 2rem; color: var(--ink-soft); }
+
+/* ---------- Crew: the muster roll ---------- */
+.table-wrap { margin-block-start: clamp(2rem, 5vw, 3rem); overflow: auto; max-inline-size: 100%; container-type: inline-size; }
+table { inline-size: 100%; border-collapse: separate; border-spacing: 0; }
+caption { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+thead th { text-align: start; font-weight: 500; color: var(--ink-soft); font-size: 0.95rem; padding: 0 1rem 0.6rem 0; border-block-end: 2px solid var(--ink); }
+tbody th, tbody td { text-align: start; vertical-align: top; padding: 1.1rem 1rem 1.1rem 0; border-block-end: 1px solid var(--line); }
+tbody th { font-weight: 400; min-inline-size: 13rem; }
+.name { font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1; display: block; }
+.code { display: inline-block; margin-inline-start: 0.5rem; padding: 0.05rem 0.4rem; border: 1.5px solid currentColor; font: 600 0.78rem/1.4 var(--body); letter-spacing: 0.04em; vertical-align: 0.35em; color: var(--accent); }
+.pun { display: block; margin-block-start: 0.4rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.35; max-inline-size: 26ch; }
+td code { white-space: nowrap; }
+
+@container (width < 640px) {
+  table, tbody, tr, th, td { display: block; }
+  thead { display: none; }
+  table { --label-2: "Post"; --label-3: "Duty"; --label-4: "Pipelines"; }
+  tr { padding-block: 1.25rem; border-block-end: 1px solid var(--line); }
+  tbody th, tbody td { padding: 0; border: 0; min-inline-size: 0; }
+  tbody td { margin-block-start: 0.5rem; }
+  tbody td::before { color: var(--ink-soft); }
+  td:nth-child(2)::before { content: var(--label-2) ": "; }
+  td:nth-child(3)::before { content: var(--label-3) ": "; }
+  td:nth-child(4)::before { content: var(--label-4) ": "; }
+}
+
+/* ---------- Scoring ---------- */
+.score-grid { margin-block-start: clamp(2rem, 5vw, 3rem); display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: start; }
+.weights { margin: 0; display: grid; gap: 0.9rem; }
+.weights div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 3ch; align-items: center; gap: 0.75rem; }
+.weights dt { font-weight: 500; }
+.weights dd { margin: 0; }
+.weights .bar { block-size: 0.9rem; background: var(--ink); inline-size: calc(var(--w) * 3.3%); }
+.weights .pct { text-align: end; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.1rem; }
+.rules li { padding-inline-start: 1rem; border-inline-start: 3px solid var(--accent); }
+.rules strong { font-weight: 600; }
+
+/* ---------- Pipelines ---------- */
+.pipes { margin-block-start: clamp(2rem, 5vw, 3rem); display: grid; gap: 0 clamp(1.5rem, 4vw, 3rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); padding: 0; list-style: none; }
+.pipes li { padding-block: 1rem; border-block-start: 1px solid var(--line); }
+.pipes code { font-size: 1.05rem; font-weight: 600; }
+.pipes .kind { color: var(--ink-soft); font-size: 0.92rem; margin-inline-start: 0.5rem; }
+.pipes p { margin-block-start: 0.25rem; color: var(--ink-soft); }
+
+/* ---------- Setup ---------- */
+.setup { margin-block-start: clamp(2rem, 5vw, 3rem); padding: 0; list-style: none; counter-reset: s; display: grid; gap: 1.75rem; max-inline-size: 52rem; }
+.setup li { counter-increment: s; display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: 1rem; }
+.setup li::before { content: counter(s); font-family: var(--display); font-size: 1.9rem; line-height: 1; color: var(--accent); }
+.setup h3 { font-family: var(--body); font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+.setup p { margin-block-start: 0.3rem; color: var(--ink-soft); }
+pre { margin: 0.75rem 0 0; padding: 0.9rem 1rem; background: var(--bg-raised); overflow-x: auto; border-inline-start: 3px solid var(--ink); }
+
+footer { border-block-start: 2px solid var(--ink); padding-block: 2rem 3rem; color: var(--ink-soft); }
+footer p + p { margin-block-start: 0.5rem; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hero">
+  <div class="wrap">
+    <h1><span>Killer</span><span>Dev Squad</span></h1>
+    <p class="pitch">A crew of Orca bots that plans, builds, reviews and ships software on its own.</p>
+    <p class="origin">The experimental dev team of <a href="https://111x.co">111x</a>. Named for the orca, the killer whale, which hunts in a pod with coordination and precision.</p>
+  </div>
+  <div class="waterline" aria-hidden="true">
+    <svg class="fin" viewBox="0 0 240 120" role="presentation" focusable="false">
+      <path d="M0 120C40 96 90 88 130 92C170 96 210 108 240 120Z" fill="var(--fin)"/>
+      <path d="M96 93C102 62 112 30 127 8C132 3 138 6 138 14C138 42 143 70 155 95Z" fill="var(--fin)"/>
+      <ellipse cx="166" cy="101" rx="17" ry="4.5" fill="var(--fin-patch)"/>
+    </svg>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="deep" aria-labelledby="run-title">
+  <div class="wrap">
+    <h2 id="run-title">One bug, start to finish</h2>
+    <p class="lede">A real run of the <code>bugfix</code> pipeline on a WordPress theme. Every step is a fresh agent session that sees only its task and the code.</p>
+
+    <ol class="log">
+      <li>
+        <div>
+          <h3>Reproduce</h3>
+          <p class="who">One session writes a test that fails because of the bug, and touches nothing else.</p>
+          <p>The Metrics grid ignored its tablet and mobile column settings. New test: 203 pass, 2 fail.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Fix</h3>
+          <p class="who">A second session makes the failing test pass.</p>
+          <p>Per-device columns wired through to the markup and CSS. All tests green.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Score</h3>
+          <p class="who">Two scorers on different models grade it without seeing each other. A third session reruns the checks and settles it.</p>
+          <p class="verdict held">94 / 100, held back</p>
+          <p>Over the bar, but one scorer caught a real defect: the tablet value was ignored between 783 and 1024 pixels.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Fix again</h3>
+          <p class="who">A new session gets only what the score reported.</p>
+          <p>A simpler fix that uses Elementor's own breakpoints: 15 lines added, 34 removed.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Score again</h3>
+          <p class="who">New scorers, who never see the earlier score.</p>
+          <p class="verdict passed">97 / 100, ready</p>
+          <p>Nothing left that must be fixed. The branch waits for a person's yes before it is merged.</p>
+        </div>
+      </li>
+    </ol>
+    <p class="note">The crew never pushes, and merges only after you say yes.</p>
+  </div>
+</section>
+
+<section aria-labelledby="crew-title">
+  <div class="wrap">
+    <h2 id="crew-title">The crew</h2>
+    <p class="lede">Eight bots, each with one job. You talk to the captain; the captain finds the right hand.</p>
+
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="crew-caption">
+      <table>
+        <caption id="crew-caption">The eight bots of the Killer Dev Squad</caption>
+        <thead>
+          <tr><th scope="col">Bot</th><th scope="col">Post</th><th scope="col">Duty</th><th scope="col">Pipelines</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="name">Orcastrator</span><span class="code">LEAD</span><span class="pun">Orca, plus orchestrator.</span></th>
+            <td>Captain</td>
+            <td>Takes every request, writes its brief, gives it to the right crew member, and merges finished work once you say yes.</td>
+            <td>None: it coordinates</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">Chartbeard</span><span class="code">SPEC</span><span class="pun">Draws the charts before anyone sails.</span></th>
+            <td>Navigator</td>
+            <td>Onboards projects and turns vague requests into specs, checked by a second reader.</td>
+            <td><code>onboard</code>, <code>spec</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">ShipItFinn</span><span class="code">DEV</span><span class="pun">Ship it, with a fin.</span></th>
+            <td>Shipwright</td>
+            <td>Builds features and changes: implement, test, score, fix.</td>
+            <td><code>feature</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">Blamebeard</span><span class="code">REV</span><span class="pun">Blackbeard, by way of <code>git blame</code>.</span></th>
+            <td>Quartermaster</td>
+            <td>Reviews every change and scores it out of 100.</td>
+            <td><code>review</code>, <code>measure</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">Fluke</span><span class="code">QA</span><span class="pun">An orca's tail, and a test that passes by luck.</span></th>
+            <td>Barnacle scraper</td>
+            <td>Proves a bug with a failing test, then gets it fixed.</td>
+            <td><code>bugfix</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">DavyLocker</span><span class="code">SEC</span><span class="pun">Davy Jones' locker, and it stays locked.</span></th>
+            <td>Master-at-arms</td>
+            <td>Audits security, dependencies and leaked secrets.</td>
+            <td><code>security-audit</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">LandHo</span><span class="code">REL</span><span class="pun">Shouts it only when the code reaches port.</span></th>
+            <td>Bosun</td>
+            <td>Says whether a branch can be released, what blocks it, and drafts the notes.</td>
+            <td><code>release</code></td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="name">Polly</span><span class="code">DOCS</span><span class="pun">Repeats what the code says.</span></th>
+            <td>Ship's parrot</td>
+            <td>Keeps documentation in step with the code.</td>
+            <td><code>docs</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="score-title">
+  <div class="wrap">
+    <h2 id="score-title">How a change earns its score</h2>
+    <p class="lede">Whoever wrote the change does not get to judge it. Two scorers that did not see it being built grade it against a fixed rubric, and every point needs evidence a person can check.</p>
+
+    <div class="score-grid">
+      <dl class="weights" aria-label="Rubric weights">
+        <div style="--w: 30"><dt>Requirements</dt><dd class="bar"></dd><dd class="pct">30%</dd></div>
+        <div style="--w: 20"><dt>Tests</dt><dd class="bar"></dd><dd class="pct">20%</dd></div>
+        <div style="--w: 15"><dt>Security</dt><dd class="bar"></dd><dd class="pct">15%</dd></div>
+        <div style="--w: 15"><dt>Maintainability</dt><dd class="bar"></dd><dd class="pct">15%</dd></div>
+        <div style="--w: 10"><dt>Operational</dt><dd class="bar"></dd><dd class="pct">10%</dd></div>
+        <div style="--w: 10"><dt>Scope</dt><dd class="bar"></dd><dd class="pct">10%</dd></div>
+      </dl>
+      <ul class="rules">
+        <li><strong>Ready means 90 or more, with nothing left to fix.</strong> A change that scores 94 with one serious finding open is not done.</li>
+        <li><strong>Severity has fixed definitions.</strong> Critical means the change fails at its job, can be exploited or damages data. A finding is never rated by comparing it with the others in the same review.</li>
+        <li><strong>The consensus checks for itself.</strong> It reruns the tests and opens every file and line a finding cites. What it cannot confirm is dropped.</li>
+        <li><strong>The loop is bounded.</strong> It fixes only what the score reported, then stops at the target, on a plateau, or after a set number of rounds.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="pipes-title">
+  <div class="wrap">
+    <h2 id="pipes-title">Ten pipelines</h2>
+    <p class="lede">A pipeline is a short list of steps. Each step runs in its own session and its own git worktree, and ends in a report.</p>
+
+    <ul class="pipes">
+      <li><code>onboard</code><span class="kind">writes</span><p>Gives a project its profile, with check commands that were actually run.</p></li>
+      <li><code>spec</code><span class="kind">writes</span><p>Drafts a spec with testable requirements, then has it challenged.</p></li>
+      <li><code>feature</code><span class="kind">writes</span><p>Implements a brief, tests it, then verifies and fixes up to the target.</p></li>
+      <li><code>bugfix</code><span class="kind">writes</span><p>Reproduces a bug with a failing test, fixes it, then scores the fix.</p></li>
+      <li><code>docs</code><span class="kind">writes</span><p>Finds docs that drifted from the code, fixes them, and audits again.</p></li>
+      <li><code>review</code><span class="kind">reads</span><p>Three focused audits and an independent score, on one page.</p></li>
+      <li><code>measure</code><span class="kind">reads</span><p>The score alone: two scorers and a verified consensus.</p></li>
+      <li><code>verify</code><span class="kind">reads</span><p>Three audits and two scorers settled by one consensus. It closes every build and every fix.</p></li>
+      <li><code>security-audit</code><span class="kind">reads</span><p>Security, dependency and secrets audits of a repository.</p></li>
+      <li><code>release</code><span class="kind">reads</span><p>Release readiness, blockers, proposed version and draft notes.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="setup-title">
+  <div class="wrap">
+    <h2 id="setup-title">Raise your own crew</h2>
+    <p class="lede">You need <a href="https://orca.dev">Orca</a> and a coding agent it can run. The crew comes set up for Claude Code, and works with any agent Orca supports for bots, such as Codex, Cursor, GitHub Copilot or Gemini CLI. It runs on your own plan with that provider.</p>
+
+    <ol class="setup">
+      <li>
+        <div>
+          <h3>Turn on orchestration</h3>
+          <p>In Orca, open Settings, then Experimental, and enable orchestration.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Create the captain</h3>
+          <p>Clone the repository. In the Bots section of Orca, create one bot named <code>Orcastrator [LEAD]</code> with your agent.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Give it its soul and skill</h3>
+          <p>From the repository, copy Orcastrator's identity and the pipeline skill into its home. Using an agent other than Claude Code? Set it in <code>skills/kds-pipeline/agent.yaml</code> first.</p>
+          <pre><code>scripts/install.sh orcastrator</code></pre>
+          <p>Run it after the new bot has written its first message in its chat, so Orca's first-run setup doesn't overwrite what you install.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Onboard a project</h3>
+          <p>Ask Orcastrator to onboard one of your Orca projects. It will ask for Chartbeard: create it from the card it shows, wait for its first message, run <code>scripts/install.sh chartbeard</code>, and Chartbeard writes the project's profile on a branch. Check every command in that profile, then tell Orcastrator to merge it.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Give the captain a job</h3>
+          <p>Tell Orcastrator what you need: a feature, a bug, a review. It writes the brief and hands it to the crew, asking for each bot the first time it needs one.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Killer Dev Squad is an experiment by <a href="https://111x.co">111x</a>.</p>
+    <p>Built on <a href="https://orca.dev">Orca</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Builds what a brief asks, then scores and fixes it until it reaches the target.
+name: feature
+description: Implement a brief, protect it with tests, then score and fix up to the target
+writes: true
+steps:
+  - name: implement
+    role: implementer
+    tier: fast
+  - name: tests
+    role: test-engineer
+    tier: fast
+    deps: [implement]
+goal:
+  maxIterations: 3   # fix rounds after the first measurement
+  plateau: 3         # stop when a round adds fewer points than this
+  fix: { role: fixer, tier: fast }
+  measure: verify

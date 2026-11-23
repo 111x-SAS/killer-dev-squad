@@ -1,0 +1,8 @@
+# Says whether a branch is ready to release and drafts its notes. Read-only.
+name: release
+description: Release readiness, blockers, proposed version and draft release notes
+writes: false
+steps:
+  - name: release-prep
+    role: release-manager
+    tier: fast

@@ -1,0 +1,8 @@
+# Gives a project the profile every other pipeline needs. Run it once per project.
+name: onboard
+description: Write and commit the project profile, with check commands that were actually run
+writes: true
+steps:
+  - name: profile
+    role: profiler
+    tier: fast

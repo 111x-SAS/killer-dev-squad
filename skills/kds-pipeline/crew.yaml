@@ -1,0 +1,47 @@
+# The crew: who does what, and where each bot can be added from.
+# Create each bot with its full name, code included, so people can tell them apart at a glance.
+#
+# `link` is the bot's Orca share link. A bot added from its link arrives complete,
+# with its soul and this skill. While `link` is empty, the bot is proposed as a card
+# and filled afterwards from the repository with `scripts/install.sh <name>`.
+crew:
+  - name: Orcastrator [LEAD]
+    code: LEAD
+    purpose: "Captain of the Killer Dev Squad: takes in every request, decides who on the crew does it, and reports where each piece of work stands."
+    pipelines: []
+    link:
+  - name: Chartbeard [SPEC]
+    code: SPEC
+    purpose: "Navigator of the Killer Dev Squad: onboards projects and turns requests into specs the crew can build from."
+    pipelines: [onboard, spec]
+    link:
+  - name: ShipItFinn [DEV]
+    code: DEV
+    purpose: "Shipwright of the Killer Dev Squad: turns a brief into working, tested code on its own branch, scored before anyone reads it."
+    pipelines: [feature]
+    link:
+  - name: Blamebeard [REV]
+    code: REV
+    purpose: "Quartermaster of the Killer Dev Squad: reviews and scores the crew's work before it reaches a person."
+    pipelines: [review, measure]
+    link:
+  - name: Fluke [QA]
+    code: QA
+    purpose: "Barnacle scraper of the Killer Dev Squad: proves a reported bug with a failing test and gets it fixed on its own branch."
+    pipelines: [bugfix]
+    link:
+  - name: DavyLocker [SEC]
+    code: SEC
+    purpose: "Master-at-arms of the Killer Dev Squad: audits projects for security holes, risky dependencies and leaked secrets."
+    pipelines: [security-audit]
+    link:
+  - name: LandHo [REL]
+    code: REL
+    purpose: "Bosun of the Killer Dev Squad: says whether a project is ready to release, what blocks it, and drafts the release notes."
+    pipelines: [release]
+    link:
+  - name: Polly [DOCS]
+    code: DOCS
+    purpose: "Ship's parrot of the Killer Dev Squad: keeps each project's documentation in step with its code."
+    pipelines: [docs]
+    link:

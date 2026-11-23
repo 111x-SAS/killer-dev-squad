@@ -1,0 +1,22 @@
+# Audits a repository, or a commit range, for security problems. Read-only.
+name: security-audit
+description: Security, dependency and secrets audits merged into one page
+writes: false
+steps:
+  - name: audit-security
+    role: auditor
+    focus: security
+    tier: strong
+  - name: audit-dependencies
+    role: auditor
+    focus: dependencies
+    tier: light
+  - name: audit-secrets
+    role: auditor
+    focus: secrets
+    tier: fast
+  - name: report
+    role: reporter
+    tier: strong
+    deps: [audit-security, audit-dependencies, audit-secrets]
+    reports: [audit-security, audit-dependencies, audit-secrets]

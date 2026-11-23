@@ -1,0 +1,23 @@
+# Reviews a branch or commit range: findings plus a verified score. Read-only.
+name: review
+description: Three focused audits and an independent score, merged into one page
+writes: false
+steps:
+  - name: audit-bugs
+    role: auditor
+    focus: bugs
+    tier: strong
+  - name: audit-security
+    role: auditor
+    focus: security
+    tier: fast
+  - name: audit-patterns
+    role: auditor
+    focus: patterns
+    tier: fast
+  - use: measure          # score-a, score-b, score-report
+  - name: report
+    role: reporter
+    tier: strong
+    deps: [audit-bugs, audit-security, audit-patterns, score-report]
+    reports: [audit-bugs, audit-security, audit-patterns, score-report]

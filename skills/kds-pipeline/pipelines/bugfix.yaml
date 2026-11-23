@@ -1,0 +1,19 @@
+# Proves a reported bug with a failing test, fixes it, then scores the fix.
+name: bugfix
+description: Reproduce a bug with a failing test, fix it, then score and fix up to the target
+writes: true
+steps:
+  - name: reproduce
+    role: reproducer
+    tier: fast
+  - name: fix
+    role: fixer
+    tier: fast
+    deps: [reproduce]
+    reports: [reproduce]
+    workOrder: Make the failing test from the reproduce step pass, by fixing the cause its report names.
+goal:
+  maxIterations: 2
+  plateau: 3
+  fix: { role: fixer, tier: fast }
+  measure: verify

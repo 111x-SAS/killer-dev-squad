@@ -1,0 +1,22 @@
+# Finds docs that no longer match the code, fixes them, and checks again with fresh eyes.
+name: docs
+description: Audit the docs against the code, fix what drifted, then re-audit
+writes: true
+steps:
+  - name: audit-docs
+    role: auditor
+    focus: docs
+    tier: fast
+  - name: fix-docs
+    role: fixer
+    tier: fast
+    deps: [audit-docs]
+    reports: [audit-docs]
+    workOrder: Close every finding in the audit-docs report. Change documentation only, never code.
+  - name: verify-docs
+    role: auditor
+    focus: docs
+    tier: fast
+    deps: [fix-docs]
+    reports: [audit-docs, fix-docs]
+    workOrder: First say, for each finding in the audit-docs report, whether it is now closed. Then audit the documentation again and list what is still wrong.

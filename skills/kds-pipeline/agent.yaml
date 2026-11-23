@@ -1,0 +1,21 @@
+# Which agent and model run each pipeline step.
+#
+# Default: everything on Claude Code. To run the crew on another agent Orca
+# supports (codex, cursor, copilot, gemini, opencode and others;
+# `orca agent installed` lists the ones on this computer), change `agent`.
+agent: claude
+
+# How many workers may run at once. 1 runs every step one after another.
+parallel: 4
+
+# A tier is what a pipeline step asks for. Each tier may set:
+#   model   one of its agent's model ids; left out, the agent's default model
+#   effort  reasoning effort for that model (low, medium, high, xhigh); needs `model`
+#   agent   an agent for this tier only; left out, `agent` above
+tiers:
+  strong: { model: opus, effort: high }     # judging: first scorer, consensus, reports, specs
+  fast:   { model: sonnet, effort: high }   # doing: building, testing, fixing, audits
+  light:  { model: haiku }                  # mechanical checks: dependency and secrets scans
+  second: { model: sonnet, effort: high }   # the second scorer
+  # To have the two scorers come from different providers, put `second` on
+  # another agent, for example:  second: { agent: codex }

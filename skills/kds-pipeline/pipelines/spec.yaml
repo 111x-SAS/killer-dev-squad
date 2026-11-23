@@ -1,0 +1,13 @@
+# Turns a request into a spec, then has a second reader challenge it.
+name: spec
+description: Draft a spec with testable requirements and tasks, then challenge it independently
+writes: true
+steps:
+  - name: draft
+    role: spec-writer
+    tier: strong
+  - name: challenge
+    role: spec-reviewer
+    tier: fast
+    deps: [draft]
+    reports: [draft]
