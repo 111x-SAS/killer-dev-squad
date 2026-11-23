@@ -68,7 +68,7 @@ Orcastrator asks you; on your yes it merges the branch locally and runs the proj
 
 ## Requirements
 
-- [Orca](https://orca.dev) 1.4.271 or later, with orchestration turned on (Settings → Experimental).
+- [Orca](https://orca.dev) 1.4.272 or later, with orchestration turned on (Settings → Experimental).
 - A coding agent Orca can run, installed and signed in. Claude Code is the default; `orca agent installed` lists what you have.
 - macOS or Linux for `scripts/install.sh` (on Windows, run it in WSL).
 - Every bot and every worker runs on your own plan with that agent's provider.
@@ -99,6 +99,7 @@ The crew runs your project's own commands: install, tests, typecheck, and whatev
 
 - **Review `.kds/project.md` before you merge it.** Check every command listed there. A build, a dev server or a preview can reach live services even with fake environment variables, for example when the code has a production URL written into it. Anything that does belongs under *Do not touch*.
 - **Start with a copy you can throw away**, with no git remote and its deploy scripts removed, until you trust the profile.
+- **Keep Orca's workspace cleanup rules off for these projects**, or at least the one that removes workspaces whose branch was merged. A run's reports live only in its workspace, so that rule deletes them after every merge. `orca workspace cleanup preview` shows what the rules would remove.
 - **The crew never pushes or deploys; only Orcastrator merges, locally, after your yes**, and reads only its own workspace. These are rules every task carries, not sandboxing: an agent can still break them, so keep the first runs where a mistake costs nothing.
 
 ## Using another agent
