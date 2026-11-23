@@ -3,6 +3,8 @@
 The experimental dev team of [111x](https://111x.co): a crew of [Orca](https://orca.dev)
 bots that works on its own across several projects.
 
+**Website:** https://111x-sas.github.io/killer-dev-squad/
+
 The name comes from the orca (the *killer whale*), which hunts in a pod with
 coordination and precision. *Killer* is also slang for "excellent", *Dev* is
 software development, and *Squad* says we are one tight team.
