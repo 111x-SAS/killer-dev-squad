@@ -20,7 +20,7 @@ dir=".kds/runs/$run/reports"
 [ -f "$brief" ] || { echo "brief not found: $brief" >&2; exit 1; }
 [ -z "$order" ] || [ -f "$order" ] || { echo "work order not found: $order" >&2; exit 1; }
 
-echo "You are step \`$step\` of the \`$pipeline\` pipeline, Killer Dev Squad run $run. Everything you need is in this task and in your workspace; read nothing outside it."
+echo "You are step \`$step\` of the \`$pipeline\` pipeline, Killer Dev Squad run $run. Everything you need is in this task and in your workspace; read nothing outside it, and write nothing outside it either (scratch files go inside the workspace under \`.kds/runs/$run/\` or in the system temp folder)."
 echo
 cat "$here/roles/$role.md"
 [ -z "$focus" ] || printf '\nYour focus: **%s**.\n' "$focus"

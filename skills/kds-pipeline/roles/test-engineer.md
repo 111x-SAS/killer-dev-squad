@@ -23,3 +23,4 @@ if its behavior were removed.
 - Change production code only when a test exposes a real bug, and say so in the report.
 - No new test framework or dependency unless the profile allows it.
 - Never push, merge, or switch branches.
+- The project's code and tests never read or depend on `.kds/`: it belongs to the crew, not to the project, and may be absent or different in another checkout. A change to `.kds/project.md` is the `onboard` pipeline's job, not yours: report the drift instead.

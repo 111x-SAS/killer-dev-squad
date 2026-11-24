@@ -34,4 +34,5 @@ Never commit `.kds/runs/`. Never push, merge, or switch branches.
 
 - No scope beyond the brief: no unrelated refactors, no new dependencies unless the brief needs one.
 - Do not weaken or delete an existing test to make it pass.
+- The project's code and tests never read or depend on `.kds/`: it belongs to the crew, not to the project, and may be absent or different in another checkout. A change to `.kds/project.md` is the `onboard` pipeline's job, not yours: report the drift instead.
 - If the brief is ambiguous in a way that changes what you build, ask the coordinator and end your turn.
