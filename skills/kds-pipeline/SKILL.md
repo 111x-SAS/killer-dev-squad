@@ -89,7 +89,7 @@ A run can stop halfway: a worker hits its usage limit, its agent exits, Orca res
 
 A usage limit: start no more workers, tell your requester the run is paused, at which step, and that it continues when the limit lifts. When Orca wakes you again, resume from step 2.
 
-A notice that a worker is retrying the model, or has waited on it for 10 minutes, is not a failure: the worker is still running. Wait for its `worker_done` or its exit.
+A notice that a worker is retrying the model, has waited on it for 10 minutes, has gone quiet, or is waiting on a background task, is not a failure: the worker is still running. Wait for its `worker_done` or its exit.
 
 If the same step is interrupted twice, or Orca refuses a retry, stop and report the run id, the step and what `worker-list` shows. Do not start a new Run or a new Task to get around it. For anything else, load Orca's own guide: `orca skills get orchestration --reference references/recovery-and-cleanup.md`.
 

@@ -69,6 +69,7 @@ Orcastrator asks you; on your yes it merges the branch locally and runs the proj
 ## Requirements
 
 - [Orca](https://orca.dev) 1.4.272 or later, with orchestration turned on (Settings → Experimental).
+- Recommended: turn on **Resume work on restart** in Orca's settings, so workers cut by a restart or a usage limit go back to their conversations by themselves.
 - A coding agent Orca can run, installed and signed in. Claude Code is the default; `orca agent installed` lists what you have.
 - macOS or Linux for `scripts/install.sh` (on Windows, run it in WSL).
 - Every bot and every worker runs on your own plan with that agent's provider.
