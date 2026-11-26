@@ -1,7 +1,7 @@
 # Which agent and model run each pipeline step.
 #
 # Default: everything on Claude Code. To run the crew on another agent Orca
-# supports (codex, cursor, copilot, gemini, opencode and others;
+# supports (codex, cursor, copilot, opencode and others;
 # `orca agent installed` lists the ones on this computer), change `agent`.
 agent: claude
 

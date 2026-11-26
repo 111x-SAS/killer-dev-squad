@@ -16,7 +16,7 @@ software development, and *Squad* says we are one tight team.
 - **Scoring**: two independent scorers grade the change against a six-dimension rubric and a consensus verifies their claims. A change is ready at 90/100.
 - **People** approve specs, answer what the crew cannot decide, and approve every merge.
 
-The crew is set up for Claude Code. It can run on any agent Orca supports for bots, such as Codex, Cursor, GitHub Copilot or Gemini CLI, each on your own plan with that provider.
+The crew is set up for Claude Code. It can run on any agent Orca supports for bots, such as Codex, Cursor, GitHub Copilot or OpenCode, each on your own plan with that provider.
 
 ## The crew
 
